@@ -384,5 +384,24 @@
     </div>
   </footer>
 
+  <div id="tailbot-container"></div>
+
+<script>
+fetch("tailbot.html")
+.then(r=>r.text())
+.then(html=>{
+document.getElementById("tailbot-container").innerHTML=html;
+
+const css=document.createElement("link");
+css.rel="stylesheet";
+css.href="tailbot.css";
+document.head.appendChild(css);
+
+const script=document.createElement("script");
+script.src="tailbot.js";
+document.body.appendChild(script);
+
+});
+</script>
 </body>
 </html>
