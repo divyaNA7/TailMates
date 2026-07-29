@@ -133,28 +133,46 @@
 
     const petList = document.getElementById("petList");
 
-    async function loadPets() 
-    {
-      try {
+async function loadPets() {
+  try {
     const snapshot = await getDocs(collection(db, "pets"));
 
     console.log("Pets found:", snapshot.size);
 
     petList.innerHTML = "";
 
+    if (snapshot.empty) {
+      petList.innerHTML = "<p>No pets found yet!</p>";
+      return;
+    }
+
     snapshot.forEach((doc) => {
       const data = doc.data();
 
-      console.log(data);
+      const card = document.createElement("div");
+      card.className = "pet-card";
 
-      petList.innerHTML += `
-        <div class="pet-card">
-          <img src="${data.image}">
-          <h3>${data.name}</h3>
-          <p>${data.breed}</p>
-        </div>
+      card.innerHTML = `
+        <img src="${data.image}" alt="${data.name}">
+        <h3>${data.name}</h3>
+        <p><strong>Breed:</strong> ${data.breed}</p>
+        <p><strong>Age:</strong> ${data.age}</p>
+        <p><strong>Gender:</strong> ${data.gender}</p>
+        <p><strong>City:</strong> ${data.city}</p>
+        <p><strong>Contact:</strong> ${data.contact}</p>
+        <button class="adopt-btn">Adopt</button>
       `;
+
+      petList.appendChild(card);
     });
+
+  } catch (error) {
+    console.error(error);
+    petList.innerHTML = "<h2>Error loading pets.</h2>";
+  }
+}
+
+loadPets();
 
     if (snapshot.empty) {
       petList.innerHTML = "<h2>No pets found.</h2>";
