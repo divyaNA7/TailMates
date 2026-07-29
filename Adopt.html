@@ -172,8 +172,9 @@ async function loadPets() {
   }
 }
 
-async function loadPets() {
-  try {
+    async function loadPets() 
+    {
+      try {
     const snapshot = await getDocs(collection(db, "pets"));
 
     console.log("Pets found:", snapshot.size);
