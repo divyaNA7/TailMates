@@ -134,8 +134,7 @@
     const petList = document.getElementById("petList");
 
     async function loadPets() {
-      const q = query(collection(db, "pets"), orderBy("timestamp", "desc"));
-      const snapshot = await getDocs(q);
+      const snapshot = await getDocs(collection(db, "pets"));
 
       petList.innerHTML = ""; // Clear loading text
 
