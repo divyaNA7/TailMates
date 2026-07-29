@@ -134,7 +134,43 @@
     const petList = document.getElementById("petList");
 
     async function loadPets() {
-      const snapshot = await getDocs(collection(db, "pets"));
+      async function loadPets() {
+  try {
+
+    const snapshot = await getDocs(collection(db, "pets"));
+
+    petList.innerHTML = "";
+
+    if (snapshot.empty) {
+      petList.innerHTML = "<p>No pets found yet!</p>";
+      return;
+    }
+
+    snapshot.forEach(doc => {
+      const data = doc.data();
+
+      const card = document.createElement("div");
+      card.className = "pet-card";
+
+      card.innerHTML = `
+        <img src="${data.image}" alt="${data.name}">
+        <h3>${data.name}</h3>
+        <p><strong>Breed:</strong> ${data.breed}</p>
+        <p><strong>Age:</strong> ${data.age}</p>
+        <p><strong>Gender:</strong> ${data.gender}</p>
+        <p><strong>City:</strong> ${data.city}</p>
+        <p><strong>Contact:</strong> ${data.contact}</p>
+        <button class="adopt-btn">Adopt</button>
+      `;
+
+      petList.appendChild(card);
+    });
+
+  } catch(error) {
+    console.error(error);
+    petList.innerHTML = "<h2>Error loading pets.</h2>";
+  }
+}
 
       petList.innerHTML = ""; // Clear loading text
 
