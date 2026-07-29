@@ -139,6 +139,10 @@
 
     const snapshot = await getDocs(collection(db, "pets"));
 
+    console.log("Documents found:", snapshot.size);
+
+    snapshot.forEach(doc => {console.log(doc.data());});
+    
     petList.innerHTML = "";
 
     if (snapshot.empty) {
