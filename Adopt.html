@@ -133,9 +133,38 @@
 
     const petList = document.getElementById("petList");
 
-    async function loadPets() {
-      async function loadPets() {
-  try {
+    async function loadPets() 
+    {
+      try {
+    const snapshot = await getDocs(collection(db, "pets"));
+
+    console.log("Pets found:", snapshot.size);
+
+    petList.innerHTML = "";
+
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+
+      console.log(data);
+
+      petList.innerHTML += `
+        <div class="pet-card">
+          <img src="${data.image}">
+          <h3>${data.name}</h3>
+          <p>${data.breed}</p>
+        </div>
+      `;
+    });
+
+    if (snapshot.empty) {
+      petList.innerHTML = "<h2>No pets found.</h2>";
+    }
+
+  } catch (e) {
+    console.error(e);
+    petList.innerHTML = "<h2>" + e.message + "</h2>";
+  }
+}
 
     const snapshot = await getDocs(collection(db, "pets"));
 
