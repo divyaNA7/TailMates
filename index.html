@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+</div><!DOCTYPE html>
 <html lang="en">
 <head>
   <title>TailMates - Pet Adoption</title>
@@ -173,43 +173,37 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
-    .slider{
-    display:flex;
-    animation:slide 24s steps(1, end) infinite;
+
+/* ===========================
+   Slider
+=========================== */
+
+.slider-container{
+    position:relative;
+    width:100%;
+    max-width:850px;
+    margin:60px auto;
+    overflow:hidden;
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
 }
 
-    .slide{
+.slider{
+    display:flex;
+    transition:transform .8s ease-in-out;
+}
+
+.slide{
     min-width:100%;
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
-    .slide img{
+.slide img{
     width:100%;
-    max-width:800px;
-    height:auto;
     display:block;
-    border-radius:18px;
-}
-
-    @keyframes slide {
-
-    0%, 20% {
-        transform: translateX(0%);
-    }
-    25%, 45% {
-        transform: translateX(-100%);
-    }
-    50%, 70% {
-        transform: translateX(-200%);
-    }
-    75%, 95% {
-        transform: translateX(-300%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
+    border-radius:20px;
 }
 
     footer {
@@ -396,7 +390,6 @@
     </div>
     <img src="cc06df9fcfb2cc518dddd7487c600b6f-removebg-preview.png">
 </div>
-</div>
 
 <div id="tailbot-window">
 <div id="tailbot-header">
@@ -427,6 +420,24 @@ Welcome to <strong>TailMates</strong>. Ask me about Adoption, Registering a Pet,
 <button id="send-btn">➤</button>
 </div>
 </div>
+  
+  <script>
+const slider = document.querySelector(".slider");
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+function showSlide(index){
+    slider.style.transform =
+    `translateX(-${index * 100}%)`;
+}
+function nextSlide(){
+    currentSlide++;
+    if(currentSlide >= slides.length){
+        currentSlide = 0;
+    }
+    showSlide(currentSlide);
+}
+setInterval(nextSlide,6000);
+    </script>
 
 <script src="tailbot.js"></script>
 </body>
