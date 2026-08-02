@@ -20,11 +20,23 @@ document.querySelectorAll("#quick-buttons button");
 // Open Chat
 // ===============================
 
-tailbotBtn.addEventListener("click", () => {
+tailbotBtn.addEventListener("click",()=>{
 
-    tailbotWindow.style.display = "flex";
+    if(tailbotWindow.style.display==="flex"){
 
-    userInput.focus();
+        tailbotWindow.style.display="none";
+
+        resetChat();
+
+    }
+
+    else{
+
+        tailbotWindow.style.display="flex";
+
+        userInput.focus();
+
+    }
 
 });
 
