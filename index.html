@@ -188,7 +188,7 @@
     display: flex;
     width: 400%;
     height: 100%;
-    animation: slide 12s infinite;
+    animation: slide 25s infinite;
     }
 
     .slide {
@@ -206,12 +206,23 @@
     }
 
     @keyframes slide {
-      0%, 20% { transform: translateX(0); }
-      25%, 45% { transform: translateX(-100%); }
-      50%, 70% { transform: translateX(-200%); }
-      75%, 95% { transform: translateX(-300%); }
-      100% { transform: translateX(0); }
+
+    0%, 20% {
+        transform: translateX(0%);
     }
+    25%, 45% {
+        transform: translateX(-100%);
+    }
+    50%, 70% {
+        transform: translateX(-200%);
+    }
+    75%, 95% {
+        transform: translateX(-300%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
 
     footer {
       background-color: #7E0CF5;
