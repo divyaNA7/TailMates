@@ -386,38 +386,42 @@
       <p>© 2025 TailMates. All Rights Reserved.</p>
     </div>
   </footer>
-    </footer>
-
 <!-- ================= TailBot ================= -->
 
 <div id="tailbot-btn">
     <img src="tail-bot.png" alt="TailBot">
 </div>
+
 <div id="tailbot-window">
-    <div id="tailbot-header">
-        <span>🐾 TailBot</span>
-        <button id="close-chat">✖</button>
-    </div>
-    <div id="tailbot-messages">
-        <div class="bot-message">
-            👋 Hi!
-            I'm TailBot.
-            Welcome to TailMates.
-            Ask me anything!
-        </div>
-    </div>
-    <div id="tailbot-input-area">
-        <input
-            id="user-input"
-            type="text"
-            placeholder="Ask TailBot..."
-        >
-        <button id="send-btn">
-            Send
-        </button>
-    </div>
+<div id="tailbot-header">
+<div class="tailbot-title">
+<span>🐾 TailBot</span>
+<small>Your TailMates Assistant</small>
 </div>
+<button id="close-chat">&times;</button>
+</div>
+
+<div id="tailbot-messages">
+<div class="bot-message">
+👋 Hi! I'm <strong>TailBot</strong>.<br><br>
+Welcome to <strong>TailMates</strong>! Ask me about Adoption, Registering a Pet, Services, Shop or Login.
+</div>
+</div>
+
+<div id="quick-buttons">
+<button data-question="How do I adopt a pet?">🐶 Adopt</button>
+<button data-question="How do I register my pet?">🐱 Register</button>
+<button data-question="What services do you provide?">🩺 Services</button>
+<button data-question="What can I buy?">🛍 Shop</button>
+<button data-question="What is TailMates?">❤️ About</button>
+</div>
+
+<div id="tailbot-input-area">
+<input id="user-input" type="text" placeholder="Ask TailBot...">
+<button id="send-btn">➤</button>
+</div>
+</div>
+
 <script src="tailbot.js"></script>
-</body>
 </body>
 </html>
