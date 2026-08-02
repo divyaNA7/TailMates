@@ -50,29 +50,29 @@ const welcomeMessage = `
 
 <div class="bot-message">
 
-👋 <strong>Hello!</strong>
+<strong>Hello!</strong>
 
 <br><br>
 
-I'm <strong>TailBot</strong> 🐾
+I'm <strong>TailBot</strong>, an assistant for you.
 
 <br><br>
 
-Welcome to TailMates!
+Welcome to TailMates
 
 <br><br>
 
 You can ask me about:
 
-<br>🐶 Adoption
+<br>Adoption
 
-<br>🐱 Registering Pets
+<br>Registering Pets
 
-<br>🩺 Services
+<br>Services
 
-<br>🛍 Shop
+<br>Shop
 
-<br>🔐 Login
+<br>Login
 
 </div>
 
