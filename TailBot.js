@@ -1,51 +1,180 @@
-const bot=document.getElementById("tailbot-btn");
+// ===============================
+// TailBot v1.0
+// TailMates
+// ===============================
 
-const windowBox=document.getElementById("tailbot-window");
+const tailbotBtn = document.getElementById("tailbot-btn");
+const tailbotWindow = document.getElementById("tailbot-window");
+const closeChat = document.getElementById("close-chat");
 
-const close=document.getElementById("close-chat");
+const sendBtn = document.getElementById("send-btn");
+const userInput = document.getElementById("user-input");
 
-bot.onclick=()=>{
+const messages = document.getElementById("tailbot-messages");
 
-windowBox.style.display="flex";
+const quickButtons =
+document.querySelectorAll("#quick-buttons button");
 
-};
 
-close.onclick=()=>{
+// ===============================
+// Open Chat
+// ===============================
 
-windowBox.style.display="none";
+tailbotBtn.addEventListener("click", () => {
 
-document.getElementById("tailbot-messages").innerHTML=`
+    tailbotWindow.style.display = "flex";
+
+    userInput.focus();
+
+});
+
+
+// ===============================
+// Close Chat
+// ===============================
+
+closeChat.addEventListener("click", () => {
+
+    tailbotWindow.style.display = "none";
+
+    resetChat();
+
+});
+
+
+// ===============================
+// Welcome Message
+// ===============================
+
+const welcomeMessage = `
 
 <div class="bot-message">
 
-👋 Hi! I'm TailBot.
+👋 <strong>Hello!</strong>
+
+<br><br>
+
+I'm <strong>TailBot</strong> 🐾
+
+<br><br>
 
 Welcome to TailMates!
 
-Ask me anything about adopting pets, registering pets, services, login, or our mission.
+<br><br>
+
+You can ask me about:
+
+<br>🐶 Adoption
+
+<br>🐱 Registering Pets
+
+<br>🩺 Services
+
+<br>🛍 Shop
+
+<br>🔐 Login
 
 </div>
 
 `;
 
-document.getElementById("user-input").value="";
 
-};
+// ===============================
+// Reset Chat
+// ===============================
+
+function resetChat(){
+
+    messages.innerHTML = welcomeMessage;
+
+    userInput.value = "";
+
+}
 
 
-const knowledge = {
+// Run once when page loads
 
-adopt: "...",
+resetChat();
 
-register: "...",
 
-login: "...",
+// ===============================
+// Add Message
+// ===============================
 
-shop: "...",
+function addMessage(type,text){
 
-services: "...",
+    const bubble = document.createElement("div");
 
-tailmates: "...",
+    bubble.className =
 
-...
+        type === "user"
+
+        ? "user-message"
+
+        : "bot-message";
+
+    bubble.innerHTML = text;
+
+    messages.appendChild(bubble);
+
+    scrollChat();
+
+}
+
+
+// ===============================
+// Scroll Down
+// ===============================
+
+function scrollChat(){
+
+    messages.scrollTop = messages.scrollHeight;
+
+}
+
+
+// ===============================
+// Typing Animation
+// ===============================
+
+function botTyping(callback){
+
+    const typing = document.createElement("div");
+
+    typing.className = "bot-message";
+
+    typing.id = "typing";
+
+    typing.innerHTML =
+
+    "TailBot is typing";
+
+    messages.appendChild(typing);
+
+    scrollChat();
+
+    let dots = 0;
+
+    const animation = setInterval(()=>{
+
+        dots++;
+
+        typing.innerHTML =
+
+        "TailBot is typing" +
+
+        ".".repeat(dots % 4);
+
+    },300);
+
+    setTimeout(()=>{
+
+        clearInterval(animation);
+
+        typing.remove();
+
+        callback();
+
+    },900);
+
 }
