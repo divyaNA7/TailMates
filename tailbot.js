@@ -251,13 +251,12 @@ After verification, your pet will appear for adoption.
 • Community Assistance
 `;
 
-        case "What can I buy pet food?":
+        case "Where can I buy pet food?":
 
             return `
 <b>Pet Shop</b><br><br>
 
-Our shop offers:
-
+Our shop offers:<br>
 • Pet Food<br>
 • Toys<br>
 • Beds<br>
