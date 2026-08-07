@@ -180,3 +180,102 @@ function botTyping(callback){
     },900);
 
 }
+// ===============================
+// Quick Button Clicks
+// ===============================
+
+quickButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const question = button.dataset.question;
+
+        addMessage("user", question);
+
+        botTyping(() => {
+
+            addMessage("bot", getReply(question));
+
+        });
+
+    });
+
+});
+
+// ===============================
+// Bot Replies
+// ===============================
+
+function getReply(question){
+
+    switch(question){
+
+        case "How do I adopt a pet?":
+
+            return `
+<b>Pet Adoption</b><br><br>
+
+1. Click on the <b>Adopt</b> page from the navigation bar.<br>
+2. Browse the available pets.<br>
+3. Choose a pet you love.<br>
+4. Fill in the adoption request form.<br>
+5. Wait for approval from our team.
+`;
+
+        case "How do I register my pet?":
+
+            return `
+<b>Register a Pet</b><br><br>
+
+Go to the <b>Register</b> page and fill in:
+
+• Pet Name<br>
+• Age<br>
+• Breed<br>
+• Description<br>
+• Photo<br>
+• Location
+
+After verification, your pet will appear for adoption.
+`;
+
+        case "What services do you provide?":
+
+            return `
+<b>TailMates Services</b><br><br>
+
+• Pet Adoption<br>
+• Register Stray Pets<br>
+• Adoption Support<br>
+• Pet Care Resources<br>
+• Community Assistance
+`;
+
+        case "What can I buy pet food?":
+
+            return `
+<b>Pet Shop</b><br><br>
+
+Our shop offers:
+
+• Pet Food<br>
+• Toys<br>
+• Beds<br>
+• Bowls<br>
+• Accessories
+`;
+
+        case "What is TailMates?":
+
+            return `
+<b>About TailMates</b><br><br>
+
+TailMates is a community-driven platform dedicated to rescuing, registering, and rehoming pets while connecting them with loving families.
+`;
+
+        default:
+
+            return "I'm still learning!";
+    }
+
+}
