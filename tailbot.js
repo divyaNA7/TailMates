@@ -76,16 +76,6 @@ Welcome to TailMates
 
 You can ask me about:
 
-<br>Adoption
-
-<br>Registering Pets
-
-<br>Services
-
-<br>Shop
-
-<br>Login
-
 </div>
 
 `;
